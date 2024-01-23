@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 import java.sql.Timestamp;
 
 @Entity
-public class Message {
+public class Messages {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
