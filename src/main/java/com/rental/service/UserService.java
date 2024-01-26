@@ -17,8 +17,14 @@ public class UserService {
 
     public User registerUser(User user) {
         // Ici, vous implémenterez la logique d'enregistrement de l'utilisateur
-        // Par exemple : hacher le mot de passe, enregistrer l'utilisateur dans la base de données, etc.
+        // Par exemple : hacher le mot de passe, enregistrer l'utilisateur dans la base
+        // de données, etc.
         return userRepository.save(user);
+    }
+
+    public boolean existsByEmail(String email) {
+        // Implémentez la vérification ici en utilisant UserRepository
+        return userRepository.existsByEmail(email);
     }
 
     // D'autres méthodes peuvent être ajoutées ici pour gérer les utilisateurs
