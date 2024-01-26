@@ -27,5 +27,5 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
-    // D'autres méthodes peuvent être ajoutées ici pour gérer les utilisateurs
+    
 }

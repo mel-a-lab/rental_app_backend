@@ -25,7 +25,7 @@ public class UserController {
         }
 
         // Assuming you handle the creation logic in UserService
-        User registeredUser = userService.create(newUser);
+        User registeredUser = userService.registerUser(newUser);
         
         if (registeredUser == null) {
             return new ResponseEntity<>("An error occurred during registration", HttpStatus.INTERNAL_SERVER_ERROR);
