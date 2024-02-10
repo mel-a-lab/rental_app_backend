@@ -8,8 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -26,10 +28,10 @@ public class User {
     private List<Rental> rentals;
 
     @OneToMany(mappedBy = "sender")
-    private List<Message> sentMessages;
+    private List<Messages> sentMessages;
 
     @ManyToMany(mappedBy = "recipients")
-    private List<Message> receivedMessages;
+    private List<Messages> receivedMessages;
 
     // Getters
     public Long getId() {
@@ -60,11 +62,11 @@ public class User {
         return rentals;
     }
 
-    public List<Message> getSentMessages() {
+    public List<Messages> getSentMessages() {
         return sentMessages;
     }
 
-    public List<Message> getReceivedMessages() {
+    public List<Messages> getReceivedMessages() {
         return receivedMessages;
     }
 
@@ -97,11 +99,11 @@ public class User {
         this.rentals = rentals;
     }
 
-    public void setSentMessages(List<Message> sentMessages) {
+    public void setSentMessages(List<Messages> sentMessages) {
         this.sentMessages = sentMessages;
     }
 
-    public void setReceivedMessages(List<Message> receivedMessages) {
+    public void setReceivedMessages(List<Messages> receivedMessages) {
         this.receivedMessages = receivedMessages;
     }
 }

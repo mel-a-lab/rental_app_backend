@@ -5,9 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Messages {
@@ -27,6 +29,10 @@ public class Messages {
     @ManyToOne
     @JoinColumn(name = "rental_id")
     private Rental rental;
+
+    @ManyToMany(mappedBy = "receivedMessages")
+    private List<User> recipients;
+
 
     // Getters
     public Long getId() {

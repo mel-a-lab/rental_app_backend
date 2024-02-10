@@ -7,8 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "rentals")
 public class Rental {
 
     @Id
@@ -25,7 +27,7 @@ public class Rental {
     private User owner;
 
     @OneToMany(mappedBy = "rental")
-    private List<Message> messages;
+    private List<Messages> messages;
 
     // Getters
     public Long getId() {
@@ -56,7 +58,7 @@ public class Rental {
         return owner;
     }
 
-    public List<Message> getMessages() {
+    public List<Messages> getMessages() {
         return messages;
     }
 
@@ -89,7 +91,7 @@ public class Rental {
         this.owner = owner;
     }
 
-    public void setMessages(List<Message> messages) {
+    public void setMessages(List<Messages> messages) {
         this.messages = messages;
     }
 }

@@ -2,7 +2,7 @@ package com.rental.service;
 
 import com.rental.entities.User;
 import com.rental.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,7 +10,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    @Autowired
+   
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
