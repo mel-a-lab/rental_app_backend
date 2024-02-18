@@ -1,7 +1,9 @@
-package com.rental.controller;
+package com.rental.controllers;
 
 import com.rental.entities.User;
-import com.rental.service.UserService;
+import com.rental.model.request.RegisterReq;
+import com.rental.services.UserService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +19,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User newUser) {
-        if (userService.existsByEmail(newUser.getEmail())) {
+    public ResponseEntity<?> registerUser(@RequestBody RegisterReq registerReq) {
+        if (userService.existsByEmail(registerReq.getEmail())) {
             return new ResponseEntity<>("Email is already in use", HttpStatus.BAD_REQUEST);
         }
 
         // Assuming you handle the creation logic in UserService
-        User registeredUser = userService.registerUser(newUser);
+        User registeredUser = userService.registerUser(convertToUser(registerReq));
         
         if (registeredUser == null) {
             return new ResponseEntity<>("An error occurred during registration", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -33,6 +35,15 @@ public class UserController {
         registeredUser.setPassword(null);
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
-    
+
+    private User convertToUser(RegisterReq registerReq){
+        User user = new User();
+        user.setName(registerReq.getName());
+        user.setEmail(registerReq.getEmail());
+        user.setPassword(registerReq.getPassword());
+        return user;
+    }
+
+
     // Add other CRUD operations as needed...
 }

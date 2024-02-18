@@ -33,6 +33,10 @@ public class User {
     @ManyToMany(mappedBy = "recipients")
     private List<Messages> receivedMessages;
 
+    public User() {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters
     public Long getId() {
         return id;
