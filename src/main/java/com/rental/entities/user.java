@@ -24,14 +24,8 @@ public class User {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Rental> rentals;
-
     @OneToMany(mappedBy = "sender")
     private List<Messages> sentMessages;
-
-    @ManyToMany(mappedBy = "recipients")
-    private List<Messages> receivedMessages;
 
     public User() {
         //TODO Auto-generated constructor stub
@@ -62,17 +56,11 @@ public class User {
         return updatedAt;
     }
 
-    public List<Rental> getRentals() {
-        return rentals;
-    }
 
     public List<Messages> getSentMessages() {
         return sentMessages;
     }
 
-    public List<Messages> getReceivedMessages() {
-        return receivedMessages;
-    }
 
     // Setters
     public void setId(Long id) {
@@ -99,15 +87,8 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public void setRentals(List<Rental> rentals) {
-        this.rentals = rentals;
-    }
-
     public void setSentMessages(List<Messages> sentMessages) {
         this.sentMessages = sentMessages;
     }
 
-    public void setReceivedMessages(List<Messages> receivedMessages) {
-        this.receivedMessages = receivedMessages;
-    }
 }

@@ -23,15 +23,12 @@ public class Messages {
     private Timestamp updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "rental_id")
+    @JoinColumn(name = "rental_id", nullable = false)
     private Rental rental;
-
-    @ManyToMany(mappedBy = "receivedMessages")
-    private List<User> recipients;
 
 
     // Getters
