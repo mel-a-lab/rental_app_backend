@@ -1,8 +1,6 @@
 package com.rental.controllers;
 
 
-import com.rental.auth.JwtUtil;
-
 import com.rental.entities.User;
 import com.rental.model.request.LoginReq;
 import com.rental.model.request.ErrorRes;
